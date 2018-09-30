@@ -75,6 +75,46 @@ E   ModuleNotFoundError: No module named 'package_1.module_1'
 
 This project was made to help understanding and reproducing the Original Poster's (OP) problem.
 
+## Possible solution
+
+A solution is to turn the `tests` directory into a Python package by adding a `__init__.py` file.
+And run the `unittest` command by specifying the top level directory of the project:
+
+```bash
+python -m unittest discover tests -t .
+```
+
+The result is:
+
+```
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+```
+
+The problem is also resolved with PyTest:
+
+```bash
+pytest tests
+```
+
+The result is:
+
+```
+
+======================== test session starts ========================
+platform darwin -- Python 3.6.1, pytest-3.8.1, py-1.6.0, pluggy-0.7.1
+rootdir: /Users/laurentlaporte/workspace/stackoverflow-q52562454, ini
+file:
+collected 1 item                                                    
+
+tests/package_1/test_module_1.py .                            [100%]
+
+===================== 1 passed in 0.01 seconds ======================
+```
+
 ## Authors
 
 * **Laurent LAPORTE** - *Initial work* - [GitHub profile](https://laurent-laporte-pro.github.io/)
